@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card fade-in text-center">
+    <h2 class="mb-4">Join for Extra Safety</h2>
+    <p class="mb-4 text-muted">
+        You are one click away from enhancing your personal security.
+        Registering allows our system to recognize you instantly in case of emergency.
+    </p>
+
+    <div style="font-size: 4rem; margin: 2rem 0;">🛡️</div>
+
+    <h3 class="mb-4">Do you want to register?</h3>
+
+    <a href="{{ url_for('register') }}" class="btn">Yes, Register Me</a>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Maybe Later</a>
+</div>
+{% endblock %}

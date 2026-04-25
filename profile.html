@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card fade-in" style="max-width: 600px;">
+    
+    <!-- Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h2 class="mb-0">Your Profile</h2>
+        <a href="{{ url_for('logout') }}" class="btn btn-secondary"
+            style="width: auto; padding: 0.5rem 1rem; font-size: 0.9rem;">
+            Logout
+        </a>
+    </div>
+
+    <!-- Profile Info -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <img src="{{ url_for('uploaded_file', filename=user['photo_filename']) }}" alt="Profile Photo"
+            style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid var(--primary-color);">
+        
+        <h3 class="mt-4">{{ user['name'] }}</h3>
+        <p class="text-muted">{{ user['email'] }}</p>
+    </div>
+
+    <!-- 🔥 START DETECTION BUTTON -->
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <a href="{{ url_for('start_detection_route') }}">
+            <button type="button" class="btn" style="background-color: red;">
+                🚨 Start Detection
+            </button>
+        </a>
+    </div>
+
+    <!-- Update Form -->
+    <form action="{{ url_for('update_profile') }}" method="POST">
+        
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" value="{{ user['phone'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="emergency_contact1">Emergency Contact 1</label>
+            <input type="tel" id="emergency_contact1" name="emergency_contact1"
+                value="{{ user['emergency_contact1'] }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="emergency_contact2">Emergency Contact 2</label>
+            <input type="tel" id="emergency_contact2" name="emergency_contact2"
+                value="{{ user['emergency_contact2'] }}">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="3" required>{{ user['address'] }}</textarea>
+        </div>
+
+        <button type="submit" class="btn">Update Profile</button>
+    </form>
+
+</div>
+{% endblock %}

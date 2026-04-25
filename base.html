@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distress Alert System</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="nav-content">
+        <a href="{{ url_for('index') }}" class="logo">🛡️ Distress Alert</a>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('signup') }}">Sign Up</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="card mb-4" style="{% if category == 'error' %}background-color: rgba(239,68,68,0.1); border-color:#ef4444;{% else %}background-color: rgba(34,197,94,0.1); border-color:#22c55e;{% endif %}">
+
+<p style="{% if category == 'error' %}color:#ef4444;{% else %}color:#22c55e;{% endif %} text-align:center; margin:0;">
+{{ message }}
+</p>
+
+</div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% block content %}{% endblock %}
+
+</div>
+
+</body>
+</html>

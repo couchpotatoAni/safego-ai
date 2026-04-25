@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card fade-in text-center">
+    <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+    <h2 class="mb-4">User Registered!</h2>
+    <p class="mb-4">
+        Thank you for registering. Your details have been securely saved, and your photo has been added to our
+        recognition system.
+    </p>
+    <p class="text-muted">
+        You are now protected by the Distress Alert System.
+    </p>
+    <a href="{{ url_for('index') }}" class="btn mt-4">Return Home</a>
+</div>
+{% endblock %}
